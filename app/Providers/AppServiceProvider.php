@@ -17,14 +17,15 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+   public function boot(): void
 {
-    // Tambahkan kode ini agar Vercel bisa menulis file cache view
+    // Pastikan pengecekan env benar
     if (config('app.env') !== 'local') {
         $path = '/tmp/storage/framework/views';
         if (!is_dir($path)) {
             mkdir($path, 0777, true);
         }
+        // Pastikan ini tidak menyebabkan error binding
         config(['view.compiled' => $path]);
     }
 }
