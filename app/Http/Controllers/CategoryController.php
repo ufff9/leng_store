@@ -61,7 +61,6 @@ class CategoryController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Hapus foto lama jika ada
             if ($category->image && file_exists(public_path('uploads/categories/'.$category->image))) {
                 unlink(public_path('uploads/categories/'.$category->image));
             }
